@@ -11,20 +11,26 @@ flowchart TB
     Internet((Internet)) --> ALB[Application Load Balancer]
 
     subgraph VPC["AWS VPC"]
+
         subgraph AZA["Availability Zone A"]
-            PublicA[Public Subnet]
+            subgraph PublicA["Public Subnet"]
+                TaskA[ECS Fargate Task]
+            end
+
             PrivateA[Private Subnet]
-            TaskA[ECS Fargate Task]
         end
 
         subgraph AZB["Availability Zone B"]
-            PublicB[Public Subnet]
+            subgraph PublicB["Public Subnet"]
+                TaskB[ECS Fargate Task]
+            end
+
             PrivateB[Private Subnet]
-            TaskB[ECS Fargate Task]
         end
 
         ALB --> TaskA
         ALB --> TaskB
+
         TaskA --> Logs[CloudWatch Logs]
         TaskB --> Logs
     end
