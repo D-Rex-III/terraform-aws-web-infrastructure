@@ -28,43 +28,52 @@ flowchart TB
         TaskA --> Logs[CloudWatch Logs]
         TaskB --> Logs
     end
-Infrastructure
-AWS VPC
-Two Availability Zones
-Public and private subnets
-Internet Gateway and routing
-Application Load Balancer
-Security groups
-ECS cluster
-ECS Fargate service
-IAM task execution role
-CloudWatch logging
-Terraform outputs
-Automated Terraform tests
-Validation
+```
+
+## Infrastructure
+
+- AWS VPC
+- Two Availability Zones
+- Public and private subnets
+- Internet Gateway and routing
+- Application Load Balancer
+- Security groups
+- ECS cluster
+- ECS Fargate service
+- IAM task execution role
+- CloudWatch logging
+- Terraform outputs
+- Automated Terraform tests
+
+## Validation
+
+```bash
 terraform init
 terraform fmt -check -recursive
 terraform validate
 terraform test
+```
 
 Terraform's mocked AWS provider is used for testing, so AWS credentials and deployed resources are not required.
 
-Continuous Integration
+## Continuous Integration
 
 GitHub Actions automatically runs:
 
-Terraform initialization
-Formatting checks
-Configuration validation
-Automated Terraform tests
+- Terraform initialization
+- Formatting checks
+- Configuration validation
+- Automated Terraform tests
 
-on pushes and pull requests to main.
+on pushes and pull requests to `main`.
 
-Cost-Conscious Design
+## Cost-Conscious Design
 
 This repository is intended as a portfolio and infrastructure-design demonstration. It avoids unnecessary paid infrastructure such as NAT Gateways and does not require live deployment to AWS.
 
-Repository Structure
+## Repository Structure
+
+```text
 .
 ├── .github/workflows/terraform.yml
 ├── tests/infrastructure.tftest.hcl
@@ -79,6 +88,8 @@ Repository Structure
 ├── security.tf
 ├── variables.tf
 └── versions.tf
-Confidentiality
+```
+
+## Confidentiality
 
 This repository was created independently as a public portfolio demonstration. It contains no proprietary employer or customer source code, credentials, infrastructure configuration, or confidential information.
